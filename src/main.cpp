@@ -1,51 +1,12 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 
-#include <complex>
-#include <iostream>
-#include <list>
-#include <functional>
-#include <iomanip>
+#include <KP4/my_header.h> //PrintList, SortByGreater, SquareContainer
 
-template <class T>
-void PrintList(const T &container)
-{
-  for (auto x : container)
-  {
-    std::cout << x << " ";
-  }
-  std::cout << std::endl;
-}
-
-template <class T>
-void SquareContainer(T &container)
-{
-  int size = container.size();
-  for (; size > 0; size--)
-  {
-    container.push_back(container.front() * container.front());
-    container.pop_front();
-  }
-}
-
-template<class T>
-bool operator>(const std::complex<T> &a, const std::complex<T> &b)
-{
-  return std::abs(a) > std::abs(b);
-}
-
-template <class T>
-void SortByGreater(T &container)
-{
-  container.sort(std::greater<typename T::value_type>());
-}
-
-template<class T>
-void SortByGreater(std::list<std::complex<T>> &container)
-{
-  container.sort([](std::complex<T> a, std::complex<T> b)
-                 { return std::abs(a) > std::abs(b); });
-}
+#include <list> //std::list
+#include <complex> //std::complex
+#include <iostream> //std::cout
+#include <iomanip> //std::setfill, std::setw
 
 int main()
 {

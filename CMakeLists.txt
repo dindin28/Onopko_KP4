@@ -11,14 +11,27 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 option(ANALYZE "Analyze code with PVS-Studio" OFF)
 
 #========================
+#Headers
+#========================
+set(headers_path "${PROJECT_SOURCE_DIR}/include")
+
+#========================
 #Sources
 #========================
 file(GLOB srcs "src/*.cpp")
+
+include_directories("src/")
 
 #========================
 #Building executable
 #========================
 add_executable(${PROJECT_NAME} ${srcs})
+
+target_include_directories(
+  ${PROJECT_NAME}
+  PRIVATE
+    ${headers_path}
+)
 
 if(ANALYZE)
   include(PVS-Studio.cmake)
